@@ -26,8 +26,11 @@ public class Expression  {
 	     String exp1 = expressionString;
 	     
 	     for(int i=0; i < exp1.length(); i++){
+	         //created char array for pointing purposes
 	         char[] exp5 = exp1.toCharArray();
 	         
+	         //this checks if the char before is a number and not a space and not a left bracket
+	         //if above checks out then the token is not cleared and the next number is added
 	         if (i > 0 && exp5[i-1] >= '0' && exp5[i-1] <= '9' && exp5[i] != ' ' && exp5[i] != ')'){
                  token.append(exp1.charAt(i));
                  String exp2 = token.toString();
