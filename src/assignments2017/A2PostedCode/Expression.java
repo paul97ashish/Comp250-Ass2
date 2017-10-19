@@ -39,8 +39,16 @@ public class Expression  {
                 
              }
 	         
-	         if (exp5[i] == ' '){
+	         else if (exp5[i] == ' '){
 	             i=i;
+	         }
+	         else if(i > 0 && (exp5[i-1] == '+' || exp5[i-1] == '-')){// && exp5[i] == '+' && exp5[i] == '-' ){
+	        	 token.append(exp1.charAt(i));
+                 String exp2 = token.toString();
+                 tokenList.remove(tokenList.size()-1);
+                 tokenList.add(exp2);
+	        	 
+	        	 
 	         }
 	         
 	         
