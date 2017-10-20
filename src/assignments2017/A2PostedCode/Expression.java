@@ -58,8 +58,6 @@ public class Expression  {
 	         }
 	     
 	     }
-
-		
 		
 		//ADD YOUR CODE ABOVE HERE
 	}
@@ -75,11 +73,22 @@ public class Expression  {
 		Stack<Integer> valueStack = new Stack<Integer>();
 		
 		//ADD YOUR CODE BELOW HERE
-		//..
-		//..
+		int answer;
+		
+		for(int j = 0; j < tokenList.size(); j++){
+			if (isInteger(tokenList.get(j)) == false) {
+				operatorStack.push(tokenList.get(j));
+			}
+			else if (isInteger(tokenList.get(j)) == true){
+				valueStack.push(Integer.parseInt(tokenList.get(j)));
+			}
+		 }
+		 
+		
+		
 		//ADD YOUR CODE ABOVE HERE
 
-		return null;   // DELETE THIS LINE
+		return 6;   // DELETE THIS LINE
 	}
 
 	//Helper methods

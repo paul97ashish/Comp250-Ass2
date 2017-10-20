@@ -45,6 +45,7 @@ public class Tester{
 		//Read expected output from the output file
 		expectedValue = Integer.valueOf(outputReader.readLine());
 		expectedParsedExpression = expReader.readLine();
+		
 
 		//Construct Expression from expression string read from
 		exp = new Expression(expString);
@@ -67,18 +68,18 @@ public class Tester{
 		computedValue = exp.eval();
 		
 		//compare the values
-//		if (computedValue.equals(expectedValue)) {
-//		    passed++;
-//		    System.out.println(exp);
-//		    //System.out.println(exp + " = " + computedValue);
-//		}
-//		else{
-//		    System.out.println("Passed " + passed + " tests");
-//		    System.out.println("Failed for input: " + expString);
-//		    System.out.println("Expected : " + expectedValue);
-//		    System.out.println("Result:   " + computedValue);
-//		    System.exit(-1);
-//		}
+		if (computedValue.equals(expectedValue)) {
+		    passed++;
+		    System.out.println(exp);
+		    //System.out.println(exp + " = " + computedValue);
+		}
+		else{
+		    System.out.println("Passed " + passed + " tests");
+		    System.out.println("Failed for input: " + expString);
+		    System.out.println("Expected : " + expectedValue);
+		    System.out.println("Result:   " + computedValue);
+		    System.exit(-1);
+		}
 	    }
 	    System.out.println("Passed all " + passed + " tests.");
 	}
