@@ -42,6 +42,7 @@ public class Expression  {
 	         else if (exp5[i] == ' '){
 	             i=i;
 	         }
+	         //add incremental stuff to tokenList
 	         else if(i > 0 && (exp5[i-1] == '+' || exp5[i-1] == '-') && (exp5[i] == '+' || exp5[i] == '-') ){
 	        	 token.append(exp1.charAt(i));
                  String exp2 = token.toString();
@@ -73,22 +74,70 @@ public class Expression  {
 		Stack<Integer> valueStack = new Stack<Integer>();
 		
 		//ADD YOUR CODE BELOW HERE
-		int answer;
 		
-		for(int j = 0; j < tokenList.size(); j++){
-			if (isInteger(tokenList.get(j)) == false) {
-				operatorStack.push(tokenList.get(j));
-			}
-			else if (isInteger(tokenList.get(j)) == true){
-				valueStack.push(Integer.parseInt(tokenList.get(j)));
-			}
-		 }
-		 
-		
+	
+		    for(int j = 0; j < tokenList.size(); j++){
+	          if (tokenList.get(j).equals("(")){
+	          }
+	          else if (isInteger(tokenList.get(j))){
+	              valueStack.push(Integer.parseInt(tokenList.get(j)));
+	          }
+	          else if (tokenList.get(j).equals("+")){
+	              operatorStack.push(tokenList.get(j));
+	          }
+	          else if (tokenList.get(j).equals("-")){          
+	              operatorStack.push(tokenList.get(j));
+	          }
+	          else if (tokenList.get(j).equals("/")){
+	              operatorStack.push(tokenList.get(j));
+	          }
+	          else if (tokenList.get(j).equals("*")){
+	              operatorStack.push(tokenList.get(j));
+	          }
+	          else if(tokenList.get(j).equals("++") || tokenList.get(j).equals("--")){
+                  operatorStack.push(tokenList.get(j));
+	          }
+	           else if (tokenList.get(j).equals("]")){
+	                  operatorStack.push(tokenList.get(j));
+	           }
+  
+	          
+	          else if (tokenList.get(j).equals(")")){
+	              String operator = operatorStack.pop();
+	              int value = valueStack.pop();
+	              if (operator.equals("+")){
+	                  value = valueStack.pop() + value;
+	              }
+	              else if (operator.equals("-")){
+	                  value = valueStack.pop() - value;
+	              }
+	              else if (operator.equals("*")){
+	                  value = valueStack.pop() * value;
+	              }
+	              else if (operator.equals("/")){
+	                  value = valueStack.pop() / value;
+	              }
+	              else if (operator.equals("++")){
+	                  value = value + 1;
+	              }
+	              else if (operator.equals("--")){
+	                  value = value - 1;
+	              }
+	              else if (operator.equals(("]"))){
+	                  value = Math.abs(value);
+	              }
+
+	              valueStack.push(value);
+	          }
+   
+		}
+		    return valueStack.get(0);
+
+	
 		
 		//ADD YOUR CODE ABOVE HERE
 
-		return 6;   // DELETE THIS LINE
+
 	}
 
 	//Helper methods
